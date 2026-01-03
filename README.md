@@ -6,4 +6,4 @@ missions
 
 Setting up environment using LIO_SAM 
 
-create map with cloudcompare.
+create map with cloudcompare.   
