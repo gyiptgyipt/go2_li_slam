@@ -10,6 +10,11 @@ create map with cloudcompare.
 
 
 
+# Requiremnet
+
+- tmuxinator
+- and blah blah ( to add and edit)
+
 # Special Thanks to 
 
 - https://github.com/TixiaoShan/LIO-SAM/tree/ros2
