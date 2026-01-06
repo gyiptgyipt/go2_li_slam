@@ -2,10 +2,17 @@ name: go2_sim
 root: ~/   # change this to your ROS 2 workspace if needed
 
 windows:
-  - gazebo:
+  - Simulation:
       layout: tiled
       panes:
         - |
             source /opt/ros/humble/setup.bash
-            source install/setup.bash   # remove if not using a workspace
-            ros2 launch go2_config gazebo_velodyne.launch.py rviz:=true
+            source install/setup.bash   # TO ADJ
+            ros2 launch go2_config gazebo_velodyne.launch.py rviz:=false
+  - LIO_SAM:
+      layout: tiled
+      panes:
+        - | 
+            source /opt/ros/humble/setup.bash
+            source install/setup.bash   # TO ADJ
+            ros2 launch lio_sam run.launch.py
