@@ -130,6 +130,12 @@ def generate_launch_description():
         description="Publish foot contacts",
     )
 
+    declare_publish_odom = DeclareLaunchArgument(
+        "publish_odom",
+        default_value="false",  # publish_odom
+        description="Enable publishing odom/raw from state_estimation",
+    )
+
     declare_publish_odom_tf = DeclareLaunchArgument(
         "publish_odom_tf",
         default_value="true",
@@ -180,6 +186,7 @@ def generate_launch_description():
         parameters=[
             {"use_sim_time": LaunchConfiguration("use_sim_time")},
             {"orientation_from_imu": LaunchConfiguration("orientation_from_imu")},
+            {"publish_odom": LaunchConfiguration("publish_odom")},
             {"urdf": Command(['xacro ', LaunchConfiguration('description_path')])},
             LaunchConfiguration('joints_map_path'),
             LaunchConfiguration('links_map_path'),
@@ -253,6 +260,7 @@ def generate_launch_description():
             declare_publish_joint_control,
             declare_publish_joint_states,
             declare_publish_foot_contacts,
+            declare_publish_odom,
             declare_publish_odom_tf,
             declare_close_loop_odom,
             description_ld,

@@ -99,6 +99,7 @@ class StateEstimation: public rclcpp::Node
     std::string base_footprint_frame_;
     std::string base_link_frame_;
     bool orientation_from_imu_;
+    bool publish_odom_;
 
     void publishFootprintToOdom_();
     void publishBaseToFootprint_();

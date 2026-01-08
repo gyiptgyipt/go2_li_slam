@@ -15,7 +15,7 @@ windows:
         - | 
             source /opt/ros/humble/setup.bash
             source install/setup.bash   # TO ADJ
-            ros2 launch lio_sam run.launch.py
+            ros2 launch lio_sam run.launch.py 
   - TeleOp_twist:
       layout: tiled
       panes:

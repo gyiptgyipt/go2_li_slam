@@ -4,7 +4,7 @@
     # Topics
     pointCloudTopic: "/velodyne_points"          # Point cloud data (your workspace provides `/velodyne_points`)
     imuTopic: "/imu/data"                        # IMU data
-    odomTopic: "/odom"                           # odometry topic (changed to match `/odom`)
+    odomTopic: "/odom/raw"                           # odometry topic (changed to match `/odom`)
     gpsTopic: "/gps"                             # GPS odometry topic (set to placeholder to avoid empty-topic error)
 
     # Frames

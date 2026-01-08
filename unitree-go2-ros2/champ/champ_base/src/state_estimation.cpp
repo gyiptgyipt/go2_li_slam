@@ -61,8 +61,13 @@ StateEstimation::StateEstimation():
             std::placeholders::_1, std::placeholders::_2
         )
     );
+    // allow disabling odom publishing via parameter `publish_odom` (default: true)
+    publish_odom_ = true;
+    this->get_parameter("publish_odom", publish_odom_);
 
-    footprint_to_odom_publisher_ = this->create_publisher<nav_msgs::msg::Odometry>("odom/raw", 1);
+    if (publish_odom_) {
+      footprint_to_odom_publisher_ = this->create_publisher<nav_msgs::msg::Odometry>("odom/raw", 1);
+    }
     base_to_footprint_publisher_ = this->create_publisher<geometry_msgs::msg::PoseWithCovarianceStamped>("base_to_footprint_pose", 1);
     foot_publisher_ = this->create_publisher<visualization_msgs::msg::MarkerArray>("foot", 1);
     
@@ -107,11 +112,13 @@ StateEstimation::StateEstimation():
     base_footprint_frame_ = node_namespace_ + "base_footprint";
     base_link_frame_ = node_namespace_ + base_name_;
 
-    std::chrono::milliseconds period(static_cast<int>(1000/50));
+        std::chrono::milliseconds period(static_cast<int>(1000/50));
 
-    odom_data_timer_ = this->create_wall_timer(
+        if (publish_odom_) {
+       odom_data_timer_ = this->create_wall_timer(
          std::chrono::duration_cast<std::chrono::milliseconds>(period),
          std::bind(&StateEstimation::publishFootprintToOdom_, this));
+        }
 
     base_pose_timer_ = this->create_wall_timer(
          std::chrono::duration_cast<std::chrono::milliseconds>(period),

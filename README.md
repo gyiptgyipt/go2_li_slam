@@ -9,7 +9,11 @@ Setting up environment using LIO_SAM
 create map with cloudcompare.   
 
 
-
+# Odom မငြိမ်သေး
+    
+    base_to_footprint_ekf
+    footprint_to_odom_ekf 
+    (/home/zyme/ros_ws/go2_sim/src/go2_li_slam/unitree-go2-ros2/champ/champ_bringup/launch/bringup.launch.py)
 # Requiremnet
 
 - tmuxinator
